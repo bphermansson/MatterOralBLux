@@ -11,6 +11,7 @@
 #include <bsp/esp-bsp.h>
 #include <esp_err.h>
 #include <esp_log.h>
+#include <esp_system.h>
 #include <esp_matter.h>
 #include <esp_matter_ota.h>
 #include <nvs_flash.h>
