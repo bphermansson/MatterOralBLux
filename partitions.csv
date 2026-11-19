@@ -1,0 +1,9 @@
+# Name,            Type, SubType, Offset,   Size,     Flags
+# Single 3 MB application, no OTA.
+# nvs and fctry keep the same offsets as the original MatterLuxMeter layout so
+# existing commissioning data in NVS survives a reflash of the app.
+nvs,               data, nvs,     0x10000,  0xC000,
+fctry,             data, nvs,     0x1E000,  0x4000,
+phy_init,          data, phy,     0x22000,  0x1000,
+esp_secure_cert,   0x3F, ,        0x23000,  0x2000,
+factory,           app,  factory, 0x30000,  0x300000,

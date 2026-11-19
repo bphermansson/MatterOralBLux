@@ -1,0 +1,15 @@
+dependencies:
+  espressif/cmake_utilities:
+    version: "^1"
+    rules: # will add "optional_component" only when all if clauses are True
+      - if: "idf_version >=5.0"
+      - if: "target in [esp32c2]"
+  esp_bsp_generic:
+    version: "^3"
+  esp-idf-lib/esp_idf_lib_helpers:
+    version: '*'
+  esp-idf-lib/i2cdev:
+    version: '*'
+  esp-idf-lib/veml7700:
+    version: '*'
+  espressif/cjson: "^1.7.19"

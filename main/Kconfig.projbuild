@@ -1,0 +1,60 @@
+menu "Oral-B"
+
+    config APP_BRUSH_ADDR
+        string "Brush BLE address filter"
+        default ""
+        help
+            Optional "aa:bb:cc:dd:ee:ff". Leave empty to accept the first
+            device that advertises a valid Oral-B iO payload.
+
+    config APP_POLL_CHARGING_MINUTES
+        int "Poll interval while the brush is charging (minutes)"
+        range 1 720
+        default 10
+        help
+            Docked is the safest moment to take the brush's single BLE
+            slot. Battery changes slowly, so this is deliberately not
+            aggressive.
+
+    config APP_POLL_IDLE_MINUTES
+        int "Poll interval while the brush is idle and off the charger (minutes)"
+        range 1 1440
+        default 60
+        help
+            The brush sleeps when off the charger and only advertises
+            periodically, so a long interval costs nothing.
+
+endmenu
+
+menu "Telegram"
+
+    config ESP_TELEGRAM_TOKEN
+        string "Telegram Bot Token"
+        default "your_token"
+        help
+            Token of the Telegram bot used for brush notifications.
+
+    config ESP_TELEGRAM_CHAT_ID
+        string "Telegram Chat ID"
+        default "your_chat_id"
+        help
+            Chat/group id that receives the brush messages. Groups start
+            with a minus sign, e.g. -1001234567890.
+
+endmenu
+
+menu "Device Configuration"
+
+    config SHTC3_I2C_SDA_PIN
+        int "I2C SDA Pin"
+        default 5
+        help
+            GPIO number for I2C master data
+
+    config SHTC3_I2C_SCL_PIN
+        int "I2C SCL Pin"
+        default 6
+        help
+            GPIO number for I2C master clock
+
+endmenu
