@@ -186,6 +186,11 @@ extern "C" void app_main()
     while (1) {
         uint32_t lux = 0;
 
+        if (esp_timer_get_time() > 12ULL * 60ULL * 60ULL * 1000000ULL) {
+            ESP_LOGI(TAG, "Restarting after 12 hours");
+            esp_restart();
+        }
+        
         if (sensor_veml7700_read(&lux) == ESP_OK && lux > 0) {
 
             uint16_t matter_val = lux_to_matter_value(lux);
