@@ -32,7 +32,7 @@
 #include <esp_timer.h>
 
 // drivers implemented by this project
-#include <drivers/veml7700_handler.h>
+#include "veml7700_handler.h"
 
 // Oral-B iO advertisement/battery watcher
 #include "oralb_ble.h"
