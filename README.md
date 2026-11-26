@@ -12,7 +12,7 @@ bluetooth monitor:
 | Where | Data |
 | ----- | ---- |
 | Matter endpoint 1 (Light Sensor) | `IlluminanceMeasurement.MeasuredValue` |
-| Telegram | Brush state changes (`running`, `idle`, `charging`, ...) |
+| Telegram | Brush state changes (`running`, `idle`, `charging`, ...); idle messages include battery percentage when available |
 | Telegram | Battery percentage when it changes |
 
 The lux reading is unchanged from

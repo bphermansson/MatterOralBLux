@@ -52,10 +52,14 @@ void brush_handler_task(void *arg)
         }
 
         /* Battery changes slowly; only report a real change. The first
-         * reading is folded into the next state message instead of being
-         * sent as a separate "battery" message at boot. */
+         * reading is included in an idle message when idle, otherwise it is
+         * folded into the next state message instead of sent at boot. */
         if (percent >= 0 && percent != last_percent) {
-            if (last_percent >= 0) {
+            if (fresh && adv.adv.state == 2) {
+                char msg[64];
+                snprintf(msg, sizeof(msg), "Brush: idle, battery %d%%", percent);
+                telegram_send(msg);
+            } else if (last_percent >= 0) {
                 char msg[64];
                 snprintf(msg, sizeof(msg), "Brush battery: %d%%", percent);
                 telegram_send(msg);
